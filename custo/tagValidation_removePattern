@@ -1,0 +1,9 @@
+# EMAIL TAG BLOCK: 
+
+(?:&lt;)
+  [\w.-]+@[\w.-]+
+(?:&gt;)
+
+| # BLABLA BLOCK: 
+
+[xX]{3,}
