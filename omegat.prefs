@@ -97,14 +97,14 @@ ${targetText}</ext_tmx_match_template>
     <search_window_back_to_initial_segment>false</search_window_back_to_initial_segment>
     <search_window_exclude_orphans>true</search_window_exclude_orphans>
     <search_window_file_names>true</search_window_file_names>
-    <segment_properties_notify_props>comment, hasNote, isAlt, isDup</segment_properties_notify_props>
+    <segment_properties_notify_props>hasNote, isAlt, isDup</segment_properties_notify_props>
     <source_font>Dialog</source_font>
     <source_font_size>14</source_font_size>
     <source_lang>en</source_lang>
     <stat_counting_custom_tags>false</stat_counting_custom_tags>
     <stat_counting_protected_text>false</stat_counting_protected_text>
     <taas_lookup>false</taas_lookup>
-    <tagValidation_customPattern>&lt;/?(EMPTY|[bui]|sup|sub|strong|strike|small|ul|ol|li|a|em|br\s*/?|img|var|span|div|p|run\d|style|center)(\s+[^&lt;&gt;]+)??&gt;|^((PA|Q)\d[A-Z0-9]+)$|&amp;lt;br\s?/&amp;gt;|[▼►⇑●∠]|&amp;#x\w+?;|%s|(\{#.+?\}|\{@.*?\}|\{[A-Z_]+\}|\[[A-Z_]{2,}\]|\^\w+\$)</tagValidation_customPattern>
+    <tagValidation_customPattern>&lt;/?(EMPTY|[bui]|sup|sub|strong|strike|small|ul|ol|li|a|em|br\s*/?|img|var|span|div|p|run\d|style|center)(\s+[^&lt;&gt;]+)??&gt;|^((PA|Q)\d[A-Z0-9]+)$|&amp;lt;br\s?/&amp;gt;|[▼►⇑●]|&amp;#x\w+?;|%s|(\{#.+?\}|\{@.*?\}|\{[A-Z_]+\}|\[[A-Z_]{2,}\]|\^\w+\$)</tagValidation_customPattern>
     <tagValidation_removePattern>(?:&lt;)(?!\s|(?:&lt;)|(/?(EMPTY|[bui]|sup|sub|strong|strike|small|ul|ol|li|a|em|br\s*/?|img|var|span|div|p|run\d|style|center)(\s+[^&gt;]+)?(?:&gt;))|/?[a-z]\d+/?(?:&gt;)).*?(?:&gt;)|(?:&lt;)[\w.-]+@[\w.-]+(?:&gt;)|[xX]{3,}</tagValidation_removePattern>
     <theme_class_name>org.omegat.gui.theme.DefaultFlatTheme</theme_class_name>
     <tipoftheday_show_on_start>false</tipoftheday_show_on_start>
@@ -116,14 +116,17 @@ ${targetText}</ext_tmx_match_template>
     <wf_insertBestMatch>false</wf_insertBestMatch>
     <wf_noSourceText>true</wf_noSourceText>
     <hide_tagonly_segments>true</hide_tagonly_segments>
-    <expr_tagonly_segments>^[\p{Zs}\u200C]*(&lt;/?[xgeb]\d/?&gt;[\p{Zs}\u200C]*)+$</expr_tagonly_segments>
+    <expr_tagonly_segments>^([\p{Zs}\u200C]*(&lt;/?[xgeb]\d/?&gt;[\p{Zs}\u200C]*)+|[\pZ-]+)$</expr_tagonly_segments>
     <tags_valid_required>true</tags_valid_required>
     <view_option_mod_info_template>Last edit by ${changedId} on ${changedDateShortCountry} at ${changedTimeCountry}</view_option_mod_info_template>
     <view_option_mod_info_template_wo_date>Last edit by ${changedId}</view_option_mod_info_template_wo_date>
     <support_locked_segments>true</support_locked_segments>
-    <always_compile_close>true</always_compile_close>
+    <always_compile_close>false</always_compile_close>
     <always_commit_compile>true</always_commit_compile>
     <view_option_template_active>true</view_option_template_active>
     <tagValidateOnLeave>true</tagValidateOnLeave>
+    <notify_multiple_translations>true</notify_multiple_translations>
+    <notify_comments>false</notify_comments>
+    <notify_notes>true</notify_notes>
   </preference>
 </omegat>

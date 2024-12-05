@@ -2,8 +2,8 @@
  * Usage : Put this script in <ScriptsDir>/project_changed folder. Create a folder if it doesn't exists.
  *
  * @authors     Manuel Souto Pico (based on a wonderful script written by Yu Tang)
- * @version     0.1.0
- * @date        2023.08.31
+ * @version     0.1.2
+ * @date        2024.10.31
  */
 
 import static org.omegat.core.events.IProjectEventListener.PROJECT_CHANGE_TYPE.*
@@ -50,26 +50,15 @@ switch (eventType) {
     case COMPILE:
         dir = project.projectProperties.targetRoot
         replacePair = [
-            [find: /&lt;([^&\n<>]+)>/, replacement: /&lt;$1&gt;/],
-            [find: /([\r])[\r]+/, replacement: /$1/],
-            // [find: /&lt;br([^&]+)&gt;/, replacement: /<br$1>/], // matched things like &lt;broad science&gt;, hence removed
-            [find: /&lt;br(\s?\/)&gt;/,   replacement: /<br$1>/],
-            [find: /&lt;br(\s+class="[^"]+"\/)&gt;/, replacement: /<br$1>/],
-            [find: /𝑎/, replacement: /<i>a<\/i>/],
-            [find: /𝑏/, replacement: /<i>b<\/i>/],
-            [find: /𝑐/, replacement: /<i>c<\/i>/],
-            [find: /𝘩/, replacement: /<i>h<\/i>/],
-            [find: /𝑙/, replacement: /<i>l<\/i>/],
-            [find: /𝑟/, replacement: /<i>r<\/i>/],
-            [find: /𝑤/, replacement: /<i>w<\/i>/],
-            [find: /𝑥/, replacement: /<i>x<\/i>/],
-            [find: /𝑦/, replacement: /<i>y<\/i>/],
-            [find: /<(span|div|p|li|a|strong|em|td|textarea|th)([^>]*)\/>/, replacement: /<$1$2><\/$1>/],
-            [find: /<(sup|sub)\/>/, replacement: /​/],
-            [find: /<(sup|sub)>\s*<\/\1>/, replacement: /​/],
-            [find: / /, replacement: /​/]
-            // [find: /([=×]) π (×)/, replacement: /$1 <m:math xmlns:m="http:\/\/www.w3.org\/1998\/Math\/MathML"><m:semantics><m:mstyle displaystyle="true" scriptlevel="0"><m:mrow class="MJX-TeXAtom-ORD"><m:mi>π<\/m:mi><\/m:mrow><\/m:mstyle><m:annotation encoding="latex">\pi<\/m:annotation><\/m:semantics><\/m:math> $2/]
-            // [find: / π/, replacement: / <m:math xmlns:m="http:\/\/www.w3.org\/1998\/Math\/MathML"><m:semantics><m:mstyle displaystyle="true" scriptlevel="0"><m:mrow class="MJX-TeXAtom-ORD"><m:mi>π<\/m:mi><\/m:mrow><\/m:mstyle><m:annotation encoding="latex">\pi<\/m:annotation><\/m:semantics><\/m:math>/]
+            [find: /&lt;([^&\n<>]+)>/, replacement: /&lt;$1&gt;/],  // escapes closing >
+            [find: /([\r])[\r]+/, replacement: /$1/],               // remove multiple CR
+            // [find: /&lt;br([^&]+)&gt;/, replacement: /<br$1>/],  // matched things like &lt;broad science&gt;, hence removed
+            [find: /&lt;br(\s?\/)&gt;/,   replacement: /<br$1>/],   // unescape break tags
+            [find: /&lt;br(\s+class="[^"]+"\/)&gt;/, replacement: /<br$1>/],    // unescape break tags with a class
+            [find: /<(span|div|p|li|a|strong|em|td|textarea|th|dummy)([^>]*)\/>/, replacement: /<$1$2><\/$1>/], // split self-closing tags
+            [find: /<(sup|sub)\/>/, replacement: /​/],              // replace empty sub/sup self-closing tags
+            [find: /<(sup|sub)>\s*<\/\1>/, replacement: /​/],       // replace empty sub/sup paired tags
+            [find: / /, replacement: /​/]                   // replace line separator with zero-width space
         ]
         break
     default:
@@ -92,7 +81,7 @@ def options = [
 
 // replacer as closure
 def replacer = {file ->
-    console.println("Check in: file ${file}")
+    console.println("Trend checked in file: ${file}")
     String text = file.getText ENCODING
     // String replaced = text.replaceAll('\r\r+', '\r') // test well!
     String replaced = text
@@ -116,8 +105,6 @@ def reloadProjectOnetime = {
 // do replace
 rootDir.traverse options, replacer
 
-if (modifiedFiles > 0 && eventType == LOAD) {
-    console.println "$modifiedFiles file(s) modified."
-    reloadProjectOnetime()
+if (modifiedFiles > 0) {
 }
 

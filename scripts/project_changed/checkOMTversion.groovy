@@ -16,9 +16,9 @@ import static org.omegat.core.events.IProjectEventListener.PROJECT_CHANGE_TYPE.*
 import static org.omegat.gui.main.ProjectUICommands.*
 import static org.omegat.util.Platform.*
 
-reqVersion = "5.7.2"
+reqVersion = "5.7.3"
 // reqRevision = "a978d82ee"
-allowedRevisions = ["a978d82ee", "4e7e1433e", "3a8399a66"]
+allowedRevisions = ["a978d82ee", "57b1bb571", "e363cb094"] // 57b1bb571 was used for Windows, e363cb094 was used for Mac
 winURL="https://cat.capstan.be/OmegaT/exe/OmegaT_${reqVersion}_Windows_64_Signed.exe"
 macURL="https://cat.capstan.be/OmegaT/exe/OmegaT_${reqVersion}_Mac.zip"
 
@@ -33,7 +33,7 @@ if (eventType == LOAD) {
         org.omegat.util.gui.UIThreadsUtil.executeInSwingThread { projectClose() }
 
         // inform the user 
-        msg="OmegaT 5.7.2 (built by cApStAn) is required.  "
+        msg="OmegaT ${reqVersion} (built by cApStAn) is required.  "
         console.println("== ${title} ==")
         console.println(msg)
         showMessageDialog null, msg, title, INFORMATION_MESSAGE

@@ -1,4 +1,74 @@
-# OmegaT (v5.7.2/5.7.3) customization
+# OmegaT (v5.7.3) customization
+
+## Update 127_cs0 (2024-11-28)
+
+* Script: Updated `md2html.groovy` script to add underlining using HTML rather than CSS
+* Script: Updated `pisa25cdata.groovy` script to handle math letters in any unit, not only HELP
+
+## Update 126_cs0 (2024-11-15)
+
+* Config: Added Mac-specfic file to have custom shortcuts
+* Script: Added script to rename Mac-specific shortcuts file when running on macOS
+* Script: Updated `checkOMTversion.groovy` to allow mac-specific update hash (OmegaT-5.7.3_0_e363cb094) -- released by accident
+
+## Update 125_cs0 (2024-11-08)
+
+* Config: Fixed word joiner and zero-width joiner shortcuts and added zero-width non-breaking space
+* Config: Added `Ctrl+Alt+A` as shortcut to create alternative translations
+* Config: Removed `∠`from custom tags
+* Config: Flash notes and stop flashing comments (until comments and segments props can be separated)
+
+## Update 124_cs0 (2024-11-01)
+
+* Script: Updated `updateConfigBundle.groovy`'s name (to remove reference to 5.7.2)
+* Script: Updated `team-project-sync.groovy` to remove all files in the target folder
+
+## Update 123_cs0 (2024-10-31)
+
+* Script: Removed `tmx-key-update.groovy` (unneeded and added by mistake)
+
+## Update 122_cs0 (2024-10-31)
+
+* Script: Updated `pisa25trend.groovy` to fix one typo (ℎ -> d)
+* Script: Updated `pisa25trend.groovy` to prevent self-closing tag 'dummy'
+* Script: Updated `checkOMTversion.groovy` to the next omegat version (OmegaT-5.7.3_0_57b1bb571) -- removed testing interim versions
+* Script: New `pisa25math.groovy` to deal with Math letters in the HELP unit exclusively
+* Script: Updated `pisa25trend.groovy` to remove Math letters substitutions
+* Script: Deleted `pisaconv.groovy` to reduce load and time during compilation
+* Script: Removed `reloadProjectOnetime` in scripts that run on compile
+
+## Update 121_cs0 (2024-10-12)
+
+* Script: Updated `checkOMTversion.groovy` to the next omegat version (OmegaT-5.7.3_0_3a8399a66)
+* Script: Updated `set_latest_translations.groovy` to handle edits in alternative translations from tm/auto
+
+## Update 120_cs0 (2024-10-03)
+
+* Config: Updated flagged patterns with disallowed text in PISA 2025 MS
+
+## Update 119_cs0 (2024-09-30)
+
+* Scripts: Updated `pisa25trend.groovy` to replace Math upper case letters with formatted ASCII equivalent (for TAO)
+
+## Update 118_cs0 (2024-09-24)
+
+* Config: Update tag-only pattern to hide also segments contianing only spacing and dash
+* Scripts: Added new scripts to go to next segment with low or high confidence (MTPE)
+* Scritps: Added MTPE scripts shortcuts set (plus renamed the default one as verification)
+* Scripts: Added cli version of some scripts (without gui dialogs)
+
+## Update 117_cs0 (2024-09-19)
+
+* Script: Updated `pisa25trend.groovy` to include all mathematical letters and 𝑠̌.
+* Config: Updated autotext shortcuts with `\mathscaron` and `\mathš` to insert 𝑠̌ (and a few other shortcuts).
+
+## Update 116_cs0 (2024-09-11)
+
+* Script: Updated `utils_import_creds.groovy` to overwrite lines if the imported file contains creds for repos already existing in 'repositories.properties'
+
+## Update 115_cs0 (2024-08-20)
+
+* Script: Add `removeLines` function in `application_startup/delete_unneeded_lines.groovy` so as to prune any lines in any files
 
 ## Update 114_cs0 (2024-08-07)
 
@@ -535,4 +605,4 @@ in the linked update it removes the local_version_notes.txt so it's run each tim
 * Shortcut issues fixed
 * Custom tags updated
 
-https://cat.capstan.be/OmegaT/v573/index.php
+https://cat.capstan.be/OmegaT/v572/index.php
