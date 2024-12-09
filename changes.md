@@ -609,4 +609,4 @@ in the linked update it removes the local_version_notes.txt so it's run each tim
 * Shortcut issues fixed
 * Custom tags updated
 
-https://cat.capstan.be/OmegaT/v572/index.php
+https://cat.capstan.be/OmegaT/v573_test/index.php
