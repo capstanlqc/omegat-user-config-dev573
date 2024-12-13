@@ -6,5 +6,5 @@ Steps:
 
 1. Sync with latest version of that repo (copy all files from there), but do not delete bash script 'change_572_url_to_573_test.sh'.
 2. Then make the required changes in dev573 (this repo)
-3. Last, run 'bash change_572_url_to_573_test.sh' to update the customization url in all places.
+3. Last, run 'bash change_572_url_to_573_test.sh' from inside this repo to restore the testing customization url in all places.
 4. Push changes and deploy to testers.
