@@ -6,6 +6,7 @@
 * Script: Updated `pisa25math.groovy` script to handle math letters HELP and some Math units (not just any XML file)
 * Script: Updated `checkOMTversion.groovy` to removed support for OmegaT 5.7.2 -- time to upgrade!
 * Script: Updated `write_source_target.groovy` (both versions) to disable GUI dialog in CLI mode and run only on COMPILE in CLI mode
+* Config: Restored `omegat.prefs`, which had been temporarily removed in the previous update.
 
 ## Update 130_cs0 (2024-12-13)
 
