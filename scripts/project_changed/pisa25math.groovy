@@ -119,11 +119,8 @@ int modifiedFiles = 0
 // options as map
 def options = [
     type       : groovy.io.FileType.FILES,
-    // nameFilter : ~/.*\.xlf/
-    // nameFilter : ~/PISA_[a-z]{3}-[A-Z]{3}.+?(MS|FT)(20)?(2[12]|1[58]).*?\.xlf/
-    nameFilter : ~/.*PISA_2025FT_.+\.xml$/
-    // see https://regex101.com/r/Eo1HiI/1 for piaac
-    // see https://regex101.com/r/Eo1HiI/2 for pisa+piaac
+    // see https://regex101.com/r/Is0CWP/1 for math notation in PISA25
+    nameFilter : ~/.*PISA_2025FT_(XYZ|MAT)_(HEL|P?MA1(0[23]|33|42))-\w+_[^_\s]+.xml$/
 ]
 
 // replacer as closure
