@@ -1,9 +1,10 @@
 /* :name = Write PISA batch TM :description = 
  *
  *  @author:    Kos Ivantsov
- *  @version:   0.3
+ *  @version:   0.4
  *  @creation:  2024.01.12
  *  @update:    2024.05.01
+ *  @update:    2024.11.19
  */
 
 import java.nio.file.Files
@@ -72,7 +73,7 @@ if (eventType == SAVE) {
     projectFiles = project.projectFiles
     projectFileList = []
     projectFiles.each { file ->
-        if (file.filePath =~ /(?i)\.(xml|html)$/) {
+        if (file.filePath =~ /(?i)\.(xml|html|po)$/) {
             projectFileList.add(file.filePath)
         }
     }
@@ -132,6 +133,7 @@ if (eventType == SAVE) {
                         entryMap.keyFile = ste.key.file
                         entryMap.keyNext = ste.key.next
                         entryMap.keyPrev = ste.key.prev
+                        entryMap.keyPath = ste.key.path
                     }
                     translatedEntries.add(entryMap)
                 }
@@ -164,7 +166,8 @@ if (eventType == SAVE) {
                 prevStr = (entry.keyPrev !== null) ? "\n      <prop type=\"prev\">${StringUtil.makeValidXML(entry.keyPrev)}</prop>" : ""
                 nextStr = (entry.keyNext !== null) ? "\n      <prop type=\"next\">${StringUtil.makeValidXML(entry.keyNext)}</prop>" : ""
                 idStr = (entry.keyID !== null) ? "\n      <prop type=\"id\">${entry.keyID}</prop>" : ""
-                outputTMXContents << "\n      <prop type=\"file\">${entry.keyFile}</prop>${prevStr}${nextStr}${idStr}"
+                pathStr = (entry.keyPath !== null) ? "\n      <prop type=\"path\">${entry.keyPath}</prop>" : ""
+                outputTMXContents << "\n      <prop type=\"file\">${entry.keyFile}</prop>${prevStr}${nextStr}${idStr}${pathStr}"
             }
             outputTMXContents << "\n      <tuv xml:lang=\"$sourceLocale\">\n        <seg>${entry.source}</seg>\n      </tuv>"
             createIDStr = (entry.creationId !== null) ? " creationid=\"${entry.creationId}\"" : "" 
