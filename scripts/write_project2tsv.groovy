@@ -12,8 +12,10 @@
  * 
  * @author:     Kos Ivantsov
  * @date:       2022-11-22
- * @latest:     2022-11-25
- * @version:    1.0
+ * @date:       2022-11-25
+ * @date:       2024-08-06
+ * @latest:     2025-09-29
+ * @version:    1.2
  */
 
 import static javax.swing.JOptionPane.*
@@ -54,7 +56,7 @@ defStr           = ""         //Marker for default translation of the segmnent
 notTranslated    = "NT"       //Marker for segments with no translation (NOT empty, but untranslated)
 emptyTrans       = "<EMPTY>"  //Marker for empty translations (intentionally empty, NOT untranslated)
 nA               = "N/A"      //Marker for non-availabe data
-paragraphMark    = "§"        //Marker for segments that begin new paragraphs in the source text
+paragraphMark    = ""        //Marker for segments that begin new paragraphs in the source text
 //  Headers in the TVS file
 filePath         = "File Path"
 fileName         = "File Name"
@@ -183,14 +185,15 @@ for (i in 0 ..< files.size()) {
         fileNameTemp = filePath.tokenize("\\/")
         fileName = fileNameTemp[fileNameTemp.size()-1]
         info = project.getTranslationInfo(ste)
-        isDup = ste.getDuplicate()
+        isDup = ste.getDuplicate().toString()
+
         if (isDup == "FIRST") {
             altUniq += resBundle("firstStr", firstStr)
         }
-        if (isDup == "NEXT") {
+        else if (isDup == "NEXT") {
             altUniq += resBundle("repStr", repStr)
         }
-        if (isDup == "NONE") {
+        else if (isDup == "NONE") { // or just else
             altUniq += resBundle("uniqStr", uniqStr)
         }
         isAlt = info.defaultTranslation ? defStr : altStr
