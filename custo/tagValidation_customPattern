@@ -38,8 +38,8 @@
   # Upper case entities between {} (eg. {COUNTRY}, {ANSWER}, {CATEGORY}, {LENGTH}, {MAXANSWERS}, {MAXLENGTH}, {MINANSWERS}, {MINLENGTH}, {QUESTION_NUMBER}, {QUESTION}, {RANGE})
   \{[A-Z_]+\}
   |
-  # Upper case entities between [] (eg. [COUNTRY])
-  \[[A-Z_]{2,}\]
+  # Upper case entities between [] (eg. [FOO], except COUNTRY)
+  \[(?!COUNTRY)[A-Z_]{2,}\]
   |
   # Interpolated variables in YSC text files, e.g. {ParticipantName} or {Participant Name}
   \{([A-Z][a-z]+\s?)+\}
@@ -47,3 +47,7 @@
   # Inserts
   \^\w+\$
 )
+
+| # EQLS 2026
+
+(?<eqls>\[(INCENTIVE TYPE/AMOUNT|Email address)\])

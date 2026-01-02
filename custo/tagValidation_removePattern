@@ -11,3 +11,7 @@
 | # DISALLOWED IN PISA
 
 [{]{1,2}newline[}]{1,2}|&lt;clock&gt;|\[check work icon\]
+
+| # EQLS 2026
+
+\[(?i:COUNTRY)\]
