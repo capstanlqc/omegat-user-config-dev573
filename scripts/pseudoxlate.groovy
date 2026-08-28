@@ -20,12 +20,12 @@ def gui(){
 
 		// pseudo-translate upper case letters 
 		search = /\p{Lu}(?![^<]*?>|[^%\s]*?%)/   
-		replac = "X"
+		replac = "Ж"
 		target = target.replaceAll(search, replac)
 
 		// pseudo-translate lower case letters 
 		search = /\p{Ll}(?![^<]*?>|[^%\s]*?%)/   
-		replac = "x"
+		replac = "ж"
 		target = target.replaceAll(search, replac)
 
 		// pseudo-translate ditis (in any case ;)
