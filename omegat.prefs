@@ -128,5 +128,6 @@ ${targetText}</ext_tmx_match_template>
     <notify_multiple_translations>true</notify_multiple_translations>
     <notify_comments>false</notify_comments>
     <notify_notes>true</notify_notes>
+    <tmx_content_provider_id>T&amp;A note: </tmx_content_provider_id>
   </preference>
 </omegat>

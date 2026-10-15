@@ -843,7 +843,7 @@ if (success > 0) {
             message.alert()
         }
     } else {
-        message = "<html<center><b>Customisation update $remVer finished!</b><br/>You may open your project now.</center></html>"
+        message = "<html><center><b>Customisation update $remVer finished!</b><br/>You may open your project now.</center></html>"
         message.alert()
     }
 }

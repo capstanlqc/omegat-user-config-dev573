@@ -40,7 +40,7 @@
 ## bash -c "$(curl -fsSL https://raw.githubusercontent.com/capstanlqc/omegat_customization/master/custo/omtlinux_custom_installer.sh)" 
 
 # constants
-VERSION="5.7.1"
+VERSION="5.7.3"
 
 
 # functions
@@ -59,7 +59,7 @@ echo "★ OMEGAT ${VERSION} ★ INSTALLATION AND CUSTOMIZATION ★"
 echo "================================================="
 echo ""
 
-echo "OmegaT ${VERSION} will be installed and customized in this Linux machine." #@todo: better introduction, options -s (silent)
+echo "OmegaT ${VERSION} (cApStAn's fork) will be installed and customized in this Linux machine." #@todo: better introduction, options -s (silent)
 # @ inform of dependencies: git
 # check: is_installed=$(git --version | wc -l) -> must be 1
 # @todo: choose desktop or server 
@@ -143,8 +143,8 @@ INTERFACE_CHOICE=$REPLY
 
 # create a temporary folder in /home/, .capstan folder will contain the config
 echo "Creating a temporary folder to download stuff..."
-mkdir -p /home/$USER/.omegat/tmp
-cd /home/$USER/.omegat/tmp
+mkdir -p /home/$USER/.omegat_capstan/tmp
+cd /home/$USER/.omegat_capstan/tmp
 
 # check if OmegaT is already installed or not skipping the installation if it is the case
 if [[ "$REINSTALL_CHOICE" == 1 ]] # re-install
@@ -156,7 +156,8 @@ then
   if [[ "$arch" == "x86_64" ]]
   then
     # 64-bit 
-    wget -O omegat.tar.bz2 https://downloads.sourceforge.net/project/omegat/OmegaT%20-%20Latest/OmegaT%20${VERSION}/OmegaT_${VERSION}_Beta_Linux_64.tar.bz2
+    wget -O omegat.tar.bz2 http://cat.capstan.be/OmegaT/dist/OmegaT_${VERSION}_Beta_Linux_64.tar.bz2
+    
     #cp ~/Downloads/OmegaT_5.7.1_Beta_Linux_64.tar.bz2 omegat.tar.bz2
     
     #extract OmegaT archive
@@ -165,7 +166,7 @@ then
   else
     # 32-bit
     echo "The OmegaT installer for 32-bit architectures does not include a Linux x86 JRE. A JRE must have been installed independently in your machine, without which OmegaT will not be able to run."
-    wget -0 omegat.zip https://downloads.sourceforge.net/project/omegat/OmegaT%20-%20Latest/OmegaT%20${VERSION}/OmegaT_${VERSION}_Beta_Without_JRE.zip
+    wget -0 omegat.zip http://cat.capstan.be/OmegaT/dist/OmegaT_${VERSION}_Beta_Without_JRE.zip
 
     #extract OmegaT archive
     echo "Extracting OmegaT..."
@@ -179,9 +180,9 @@ then
   #Run omegat installer
   echo "Installing OmegaT..."
   bash linux-install.sh
-  cd .. # back to tmp #= cd /home/$USER/.omegat/tmp
+  cd .. # back to tmp #= cd /home/$USER/.omegat_capstan/tmp
 fi
-# we are in ~/.omegat/tmp
+# we are in ~/.omegat_capstan/tmp
 
 # get custom files
 echo "Downloading customization files..."
@@ -195,13 +196,13 @@ if [[ "$INTERFACE_CHOICE" == 1 ]] # gui
 then
   
   # for scripts
-  SCRIPTS_DIR="/home/$USER/.omegat/scripts" #|| SCRIPTS_DIR="/opt/omegat/OmegaT_${VERSION}/scripts"
+  SCRIPTS_DIR="/home/$USER/.omegat_capstan/scripts" #|| SCRIPTS_DIR="/opt/omegat/OmegaT_${VERSION}/scripts"
   mkdir -p $SCRIPTS_DIR
   sudo cp -rf /opt/omegat/scripts/* $SCRIPTS_DIR # move standar scripts to user config dir
 
   # update omegat.prefs
-  prefs_file="/home/$USER/.omegat/omegat.prefs"
-  file_templ="/home/$USER/.omegat/tmp/omegat_customization/omegat.prefs"
+  prefs_file="/home/$USER/.omegat_capstan/omegat.prefs"
+  file_templ="/home/$USER/.omegat_capstan/tmp/omegat_customization/omegat.prefs"
   # wget -0 $file_templ https://gist.githubusercontent.com/msoutopico/ff9b52d2d10f165fa9fdc3f4000559b8/raw/9df5b039007f0998eacba84d8c62ca4f316053a2/omegat.prefs.template
   
   # update path to scripts directory
@@ -223,7 +224,7 @@ then
   fi
 
   # 
-  sudo cp -rf * /home/$USER/.omegat
+  sudo cp -rf * /home/$USER/.omegat_capstan
 
 else
   sudo cp -rf plugins scripts /opt/omegat/ # add add-ons to install dir
@@ -234,7 +235,7 @@ fi
 # source /home/$USER/.bashrc
 
 #Clean up tmp folder
-rm -rf /home/$USER/.omegat/tmp
+rm -rf /home/$USER/.omegat_capstan/tmp
 
 echo ""
 echo "★ OmegaT $VERSION has been installed and customized successfully."
@@ -246,7 +247,7 @@ echo "★ OmegaT $VERSION has been installed and customized successfully."
 # HASH
 
 # remove stuff we don't need
-cd /home/$USER/.omegat
+cd /home/$USER/.omegat_capstan
 sudo chmod 775 -R *
 sudo chown $USER:$USER -R *
 sudo rm -rf todo.md custo 

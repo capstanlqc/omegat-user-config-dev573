@@ -1,12 +1,22 @@
 # OmegaT (v5.7.3) customization
 
-## Update 133_csp ()
+## Update 135_csp ()
 
-* Plugin: New `importExportCredentials-2.0.jar` to streamline team project authentication
+* Script: New `proj_custom_tags.groovy` to use project-specfic custom tag definitions
+
+## Update 134_csp (2026-10-15) 
+
+* Plugin: Added `omegat-plugin-workflow-1.7.1.jar` to interact with workflows.
+* Plugin: Updated `omegat-plugin-credentialsManager-3.1-obfuscated.jar` to streamline team project authentication
 * Script: New `check_rules_CSV.groovy` with more checks and CSV output.
 * Script: Updated `scripts/project_changed/checkOMTversion.groovy` to run only for cApStAn builds of OmegaT in version 5.7.4
 * Script: Updated `scripts/updateConfigBundle.groovy` to disable running on non-cApStAn builds of OmegaT
-* Script: New `proj_custom_tags.groovy` to use project-specfic custom tag definitions
+
+## Update 133_csp (2026-04-30) 
+
+* Plugin: Added `omegat-plugin-credentialsManager-2.1.jar` to import credentials files.
+* Plugin: Added `TmxCommentsProvider-1.2.jar` to show T&A notes in the Comments pane.
+* Script: Fixed typo (`<html<center`) in customization script.
 
 ## Update 132_cs0 (2026-01-05)
 
